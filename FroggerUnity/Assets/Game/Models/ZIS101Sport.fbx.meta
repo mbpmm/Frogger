@@ -1,0 +1,274 @@
+fileFormatVersion: 2
+guid: f3a1a9accecd7f74398ca6170f6ee13f
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Body
+    100002: BtakeLight
+    100004: Buttons
+    100006: DoorL
+    100008: DoorR
+    100010: floor
+    100012: FrontWheelL
+    100014: FrontWheelR
+    100016: HeadLight
+    100018: IndoorL
+    100020: IndoorR
+    100022: instrGlass
+    100024: instruments
+    100026: interior
+    100028: LightsL
+    100030: LightsR
+    100032: Object001
+    100034: rearGlass
+    100036: RearWheelL
+    100038: RearWheelR
+    100040: roof
+    100042: StWGlass
+    100044: STwheel
+    100046: TurnLight
+    100048: wingshild
+    100050: //RootNode
+    400000: Body
+    400002: BtakeLight
+    400004: Buttons
+    400006: DoorL
+    400008: DoorR
+    400010: floor
+    400012: FrontWheelL
+    400014: FrontWheelR
+    400016: HeadLight
+    400018: IndoorL
+    400020: IndoorR
+    400022: instrGlass
+    400024: instruments
+    400026: interior
+    400028: LightsL
+    400030: LightsR
+    400032: Object001
+    400034: rearGlass
+    400036: RearWheelL
+    400038: RearWheelR
+    400040: roof
+    400042: StWGlass
+    400044: STwheel
+    400046: TurnLight
+    400048: wingshild
+    400050: //RootNode
+    2100000: body01
+    2100002: floor01
+    2100004: intr01
+    2100006: rwheel01
+    2100008: frwheel01
+    2100010: roof01
+    2100012: lights01
+    2100014: stwheel01
+    2100016: instr01
+    2100018: Glass
+    2100020: InstrGlass
+    2100022: StWGlass
+    2100024: ButtonGlass
+    2100026: BRKGlass
+    2100028: TRNGlass
+    2100030: HDLight
+    2300000: Body
+    2300002: BtakeLight
+    2300004: Buttons
+    2300006: DoorL
+    2300008: DoorR
+    2300010: floor
+    2300012: FrontWheelL
+    2300014: FrontWheelR
+    2300016: HeadLight
+    2300018: IndoorL
+    2300020: IndoorR
+    2300022: instrGlass
+    2300024: instruments
+    2300026: interior
+    2300028: LightsL
+    2300030: LightsR
+    2300032: Object001
+    2300034: rearGlass
+    2300036: RearWheelL
+    2300038: RearWheelR
+    2300040: roof
+    2300042: StWGlass
+    2300044: STwheel
+    2300046: TurnLight
+    2300048: wingshild
+    3300000: Body
+    3300002: BtakeLight
+    3300004: Buttons
+    3300006: DoorL
+    3300008: DoorR
+    3300010: floor
+    3300012: FrontWheelL
+    3300014: FrontWheelR
+    3300016: HeadLight
+    3300018: IndoorL
+    3300020: IndoorR
+    3300022: instrGlass
+    3300024: instruments
+    3300026: interior
+    3300028: LightsL
+    3300030: LightsR
+    3300032: Object001
+    3300034: rearGlass
+    3300036: RearWheelL
+    3300038: RearWheelR
+    3300040: roof
+    3300042: StWGlass
+    3300044: STwheel
+    3300046: TurnLight
+    3300048: wingshild
+    4300000: Body
+    4300002: floor
+    4300004: interior
+    4300006: RearWheelR
+    4300008: FrontWheelR
+    4300010: FrontWheelL
+    4300012: roof
+    4300014: LightsL
+    4300016: LightsR
+    4300018: RearWheelL
+    4300020: STwheel
+    4300022: instruments
+    4300024: DoorL
+    4300026: DoorR
+    4300028: IndoorL
+    4300030: IndoorR
+    4300032: wingshild
+    4300034: rearGlass
+    4300036: instrGlass
+    4300038: StWGlass
+    4300040: Buttons
+    4300042: BtakeLight
+    4300044: TurnLight
+    4300046: HeadLight
+    4300048: Object001
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body01
+    second: {fileID: 2100000, guid: 08e25bb5b9f57674d845bf1c31820daf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: frwheel01
+    second: {fileID: 2100000, guid: 80ba6f823d54545448bc2d7f2d149fbc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: instr01
+    second: {fileID: 2100000, guid: 5997663dc87204843989ffd43cce26d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: intr01
+    second: {fileID: 2100000, guid: aa553701936f2484eaea444102c20750, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lights01
+    second: {fileID: 2100000, guid: fa6ecf0fb6faaaf49ac6d7a5a4fb19a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: roof01
+    second: {fileID: 2100000, guid: 893e0088669793f42af0ff1f11415292, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rwheel01
+    second: {fileID: 2100000, guid: 587f3b32402a2414ab518287fcab9d84, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stwheel01
+    second: {fileID: 2100000, guid: d6abbad25e51c7446a0c6f3da64524fb, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

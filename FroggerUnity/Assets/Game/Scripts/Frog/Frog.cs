@@ -13,6 +13,7 @@ public class Frog : MonoBehaviour
     private float timer;
     private bool isLeft;
     private bool isRight;
+    private bool isForward;
     void Start()
     {
         pos2 = transform.position;
@@ -23,25 +24,25 @@ public class Frog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        t += Time.deltaTime/1.5f;
+        t += Time.deltaTime*2f;
         transform.position = Vector3.Lerp(transform.position, pos2, t);
         timer += Time.deltaTime;
         t2 += Time.deltaTime * 2f;
         transform.rotation = Quaternion.Lerp(transform.rotation, rot2, t2);
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             MoveForward();
             Invoke("Idle2",0.5f);
             timer = 0;
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             MoveLeft();
             Invoke("Idle2", 0.5f);
             timer = 0;
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             MoveRight();
             Invoke("Idle2", 0.5f);
@@ -49,6 +50,8 @@ public class Frog : MonoBehaviour
         }
 
         Debug.Log(timer);
+        Debug.Log("derecha: " +isRight);
+        Debug.Log("izquierda: " + isLeft);
     }
 
 
@@ -59,61 +62,69 @@ public class Frog : MonoBehaviour
 
     public void MoveForward()
     {
-        frogAnim.Jump();
-        t = 0;
-        pos2 = transform.position + new Vector3(0, 0, 1);
-        t2 = 0;
-        if (isLeft)
+        if (t >= 1f)
         {
-            isLeft = false;
-            rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, 90, 0));
+            isForward = true;
+            frogAnim.Jump();
+            t = 0;
+            pos2 = transform.position + new Vector3(0, 0, 1);
+            t2 = 0;
+            if (isLeft)
+            {
+                isLeft = false;
+                rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, 90, 0));
+            }
+            if (isRight)
+            {
+                isRight = false;
+                rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, -90, 0));
+            }
         }
-        if (isRight)
-        {
-            isRight = false;
-            rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, -90, 0));
-        }
-
     }
 
     public void MoveLeft()
     {
-        isLeft = true;
-        frogAnim.Jump();
-        t = 0;
-        t2 = 0;
-        pos2 = transform.position + new Vector3(-1, 0, 0);
-        if (transform.rotation.eulerAngles.y==0)
+        if (t >= 1f)
         {
-            
-            rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, -90, 0));
+            isLeft = true;
+            frogAnim.Jump();
+            t = 0;
+            t2 = 0;
+            pos2 = transform.position + new Vector3(-1, 0, 0);
+            if (isForward)
+            {
+                isForward = false;
+                rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, -90, 0));
+            }
+            if (isRight)
+            {
+                isRight = false;
+                isLeft = true;
+                rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, -180, 0));
+            }
         }
-        if (isRight)
-        {
-            isRight = false;
-            //isLeft = true;
-            rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, -180, 0));
-        }
-        
     }
 
     public void MoveRight()
     {
-        isRight = true;
-        frogAnim.Jump();
-        t = 0;
-        t2 = 0;
-        pos2 = transform.position + new Vector3(1, 0, 0);
-        if (transform.rotation.eulerAngles.y == 0)
+        if (t >= 1f)
         {
-            
-            rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, 90, 0));
-        }
-        if (isLeft)
-        {
-            //isRight = true;
-            isLeft = false;
-            rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, 180, 0));
+            isRight = true;
+            frogAnim.Jump();
+            t = 0;
+            t2 = 0;
+            pos2 = transform.position + new Vector3(1, 0, 0);
+            if (isForward)
+            {
+                isForward = false;
+                rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, 90, 0));
+            }
+            if (isLeft)
+            {
+                isRight = true;
+                isLeft = false;
+                rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, 180, 0));
+            }
         }
     }
 }

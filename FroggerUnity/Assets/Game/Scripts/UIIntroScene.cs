@@ -1,0 +1,44 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+public class UIIntroScene : MonoBehaviour
+{
+    public Button play;
+    public Button quit;
+    public Canvas credits;
+    // Start is called before the first frame update
+    void Start()
+    {
+        credits.gameObject.SetActive(false);
+    }
+
+    public void GoToGameScene()
+    {
+        LoaderManager.Get().LoadScene("GameScene");
+        UILoadingScreen.Get().SetVisible(true);
+    }
+
+    public void GoToCredits()
+    {
+        credits.gameObject.SetActive(true);
+        gameObject.SetActive(false);
+    }
+
+    public void GoToMenu()
+    {
+        credits.gameObject.SetActive(false);
+        gameObject.SetActive(true);
+    }
+
+    public void Quit()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+    }
+}

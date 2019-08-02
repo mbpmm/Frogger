@@ -16,7 +16,8 @@ public class Frog : MonoBehaviour
     private bool isForward;
     void Start()
     {
-        pos2 = transform.position;
+        isForward = true;
+        //pos2 = transform.position;
         rot2 = transform.rotation;
         frogAnim = GetComponent<FrogController>();
     }
@@ -126,5 +127,10 @@ public class Frog : MonoBehaviour
                 rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, 180, 0));
             }
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        pos2 = transform.position;
     }
 }

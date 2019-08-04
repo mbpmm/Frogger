@@ -5,7 +5,7 @@ using UnityEngine;
 public class Frog : MonoBehaviour
 {
     public FrogController frogAnim;
-    // Start is called before the first frame update
+    public Rigidbody rb;
     private float t;
     private float t2;
     private Vector3 pos2;
@@ -14,19 +14,23 @@ public class Frog : MonoBehaviour
     private bool isLeft;
     private bool isRight;
     private bool isForward;
+    private bool isBack;
+    private bool onGround;
     void Start()
     {
         isForward = true;
-        //pos2 = transform.position;
+        pos2 = new Vector3(0, 0.51f,0);
         rot2 = transform.rotation;
         frogAnim = GetComponent<FrogController>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         t += Time.deltaTime*2f;
-        transform.position = Vector3.Lerp(transform.position, pos2, t);
+        //transform.position = Vector3.Lerp(transform.position, pos2, t);
+        rb.MovePosition(Vector3.Lerp(transform.position, pos2, t));
         timer += Time.deltaTime;
         t2 += Time.deltaTime * 2f;
         transform.rotation = Quaternion.Lerp(transform.rotation, rot2, t2);
@@ -34,7 +38,13 @@ public class Frog : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             MoveForward();
-            Invoke("Idle2",0.5f);
+            Invoke("Idle2", 0.5f);
+            timer = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            MoveBack();
+            Invoke("Idle2", 0.5f);
             timer = 0;
         }
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
@@ -50,12 +60,8 @@ public class Frog : MonoBehaviour
             timer = 0;
         }
 
-        Debug.Log(timer);
-        Debug.Log("derecha: " +isRight);
-        Debug.Log("izquierda: " + isLeft);
+        
     }
-
-
     void Idle2()
     {
         frogAnim.Idle();
@@ -67,6 +73,7 @@ public class Frog : MonoBehaviour
         {
             isForward = true;
             frogAnim.Jump();
+            rb.velocity = new Vector3(0, 5f, 0);
             t = 0;
             pos2 = transform.position + new Vector3(0, 0, 1);
             t2 = 0;
@@ -80,6 +87,39 @@ public class Frog : MonoBehaviour
                 isRight = false;
                 rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, -90, 0));
             }
+            if (isBack)
+            {
+                isBack = false;
+                rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, 180, 0));
+            }
+        }
+    }
+
+    public void MoveBack()
+    {
+        if (t >= 1f)
+        {
+            isBack = true;
+            frogAnim.Jump();
+            rb.velocity = new Vector3(0, 5f, 0);
+            t = 0;
+            pos2 = transform.position + new Vector3(0, 0, -1);
+            t2 = 0;
+            if (isLeft)
+            {
+                isLeft = false;
+                rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, -90, 0));
+            }
+            if (isRight)
+            {
+                isRight = false;
+                rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, 90, 0));
+            }
+            if (isForward)
+            {
+                isForward = false;
+                rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, 180, 0));
+            }
         }
     }
 
@@ -89,6 +129,7 @@ public class Frog : MonoBehaviour
         {
             isLeft = true;
             frogAnim.Jump();
+            rb.velocity = new Vector3(0, 5f, 0);
             t = 0;
             t2 = 0;
             pos2 = transform.position + new Vector3(-1, 0, 0);
@@ -96,6 +137,11 @@ public class Frog : MonoBehaviour
             {
                 isForward = false;
                 rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, -90, 0));
+            }
+            if (isBack)
+            {
+                isBack = false;
+                rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, 90, 0));
             }
             if (isRight)
             {
@@ -112,6 +158,7 @@ public class Frog : MonoBehaviour
         {
             isRight = true;
             frogAnim.Jump();
+            rb.velocity = new Vector3(0, 5f, 0);
             t = 0;
             t2 = 0;
             pos2 = transform.position + new Vector3(1, 0, 0);
@@ -119,6 +166,11 @@ public class Frog : MonoBehaviour
             {
                 isForward = false;
                 rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, 90, 0));
+            }
+            if (isBack)
+            {
+                isBack = false;
+                rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, -90, 0));
             }
             if (isLeft)
             {
@@ -131,6 +183,21 @@ public class Frog : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        pos2 = transform.position;
+        //pos2 = transform.position;
+        onGround = true;
+        if (collision.gameObject.tag=="floor")
+        {
+            Debug.Log("colisiona");
+        }
+        if (collision.gameObject.tag == "tree")
+        {
+            Debug.Log("pega en el arbol");
+            transform.position = collision.transform.position;
+        }
+        if (collision.gameObject.tag == "car")
+        {
+            Debug.Log("pega en el auto");
+        }
+
     }
 }

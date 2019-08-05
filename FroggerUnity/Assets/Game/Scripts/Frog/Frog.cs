@@ -24,13 +24,24 @@ public class Frog : MonoBehaviour
         frogAnim = GetComponent<FrogController>();
         rb = GetComponent<Rigidbody>();
     }
-
+    public float tiempoDeSalto = 0;
+    public float tiempoDeSaltoTotal = 0.5f;
+    public Vector3 lastPos;
+    public Vector3 newPos;
     // Update is called once per frame
     void FixedUpdate()
     {
         t += Time.deltaTime*2f;
         //transform.position = Vector3.Lerp(transform.position, pos2, t);
-        rb.MovePosition(Vector3.Lerp(transform.position, pos2, t));
+        tiempoDeSalto += Time.deltaTime;
+        if ( tiempoDeSalto / tiempoDeSaltoTotal <= 1)
+            rb.MovePosition(Vector3.Lerp(lastPos, newPos, tiempoDeSalto / tiempoDeSaltoTotal));
+
+        if (tiempoDeSalto / tiempoDeSaltoTotal > 1 && (tiempoDeSalto / tiempoDeSaltoTotal <1.5F))
+            rb.transform.position = newPos;
+
+
+        //rb.MovePosition(Vector3.Lerp(transform.position, pos2, t));
         timer += Time.deltaTime;
         t2 += Time.deltaTime * 2f;
         transform.rotation = Quaternion.Lerp(transform.rotation, rot2, t2);
@@ -69,30 +80,34 @@ public class Frog : MonoBehaviour
 
     public void MoveForward()
     {
-        if (t >= 1f)
-        {
-            isForward = true;
+        //if (t >= 1f)
+        //{
+        //    isForward = true;
             frogAnim.Jump();
+            lastPos = transform.position;
             rb.velocity = new Vector3(0, 5f, 0);
-            t = 0;
-            pos2 = transform.position + new Vector3(0, 0, 1);
-            t2 = 0;
-            if (isLeft)
-            {
-                isLeft = false;
-                rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, 90, 0));
-            }
-            if (isRight)
-            {
-                isRight = false;
-                rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, -90, 0));
-            }
-            if (isBack)
-            {
-                isBack = false;
-                rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, 180, 0));
-            }
-        }
+            //t = 0;
+            //pos2 = transform.position + new Vector3(0, 0, 1);
+            
+            newPos = transform.position + new Vector3(0, 0, 1);
+            tiempoDeSalto = 0;
+            //t2 = 0;
+            //if (isLeft)
+            //{
+            //    isLeft = false;
+            //    rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, 90, 0));
+            //}
+            //if (isRight)
+            //{
+            //    isRight = false;
+            //    rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, -90, 0));
+            //}
+            //if (isBack)
+            //{
+            //    isBack = false;
+            //    rot2 = transform.rotation * Quaternion.Euler(new Vector3(0, 180, 0));
+            //}
+        //}
     }
 
     public void MoveBack()
@@ -192,7 +207,7 @@ public class Frog : MonoBehaviour
         if (collision.gameObject.tag == "tree")
         {
             Debug.Log("pega en el arbol");
-            transform.position = collision.transform.position;
+            //transform.position = collision.transform.position;
         }
         if (collision.gameObject.tag == "car")
         {

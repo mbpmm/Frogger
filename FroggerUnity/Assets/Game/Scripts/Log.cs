@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Log : MonoBehaviour
 {
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,6 @@ public class Log : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.right * Time.deltaTime;
+        transform.position += Vector3.right * Time.deltaTime * speed;
     }
 }
